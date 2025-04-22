@@ -1,0 +1,187 @@
+/* Productos */
+
+.top-productos{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contenedor-opciones{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contenedor-opciones span{
+    color: #777;
+    background-color: #fff;
+    padding: .7rem 3rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.contenedor-opciones span:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.contenedor-opciones span.activar{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Tarjetas de prodcutos */
+
+.contenedor-productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));  
+    gap: 3rem;
+}
+
+.card-producto{
+    background-color: #fff;
+    padding: 2rem 3rem;
+    border-radius: .8rem;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-img{
+    position: relative;
+
+}
+
+.contenedor-img img{
+    width: 100%;
+}
+
+.contenedor-img .descuento {
+    position: absolute;
+    left: 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2px 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+}
+
+.card-producto:hover .descuento{
+    background-color: #000;
+}
+
+.btn-grupo{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    right: -3rem;
+    z-index: -1;
+    transition: all .4s ease;
+}
+
+.btn-grupo span {
+    border: 1px solid var(--primary-color);
+    padding: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .5 ease;
+}
+
+.btn-grupo span:hover{
+    background-color: var(--primary-color);
+}
+
+.btn-grupo span i{
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.btn-grupo span:hover i{
+    color: #fff;
+}
+
+.card-producto:hover .btn-grupo{
+    z-index: 0;
+    right: -1rem;
+}
+
+.contenido-card-producto{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, min-content);
+    row-gap: 1rem;
+}
+
+.estrellas{
+    grid-row: 1/2;
+    grid-column: 1/-1;
+}
+
+.estrellas i{
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.contenido-card-producto h3{
+    grid-row: 2/3;
+    grid-column: 1/-1;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.contenido-card-producto h3:hover{
+    color: var(--primary-color);
+}
+
+.agregar-card{
+    justify-self: start;
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .4s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.agregar-card:hover{
+    background-color: var(--primary-color);
+}
+
+.agregar-card i{
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.agregar-card:hover i{
+    color: #fff;
+}
+
+.contenido-card-producto .precio {
+    justify-self: end;
+    align-self: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.contenido-card-producto .precio span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-decoration: line-through;
+    color: #777;
+    margin-left: .5rem;
+}
