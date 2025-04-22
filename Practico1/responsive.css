@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --primary-color: #c7a17a;
+    --background-color: #f9f5f0;
+    --dark-color: #151515;
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Utilizades */
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.heading-1{
+    text-align: center;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+/* ** *****/ /***** MEDIA QUERIES -- 768px *****/ /***** ** */
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+
+    /* Header */
+    .destacado {
+        padding: 2rem;
+    }
+
+    .soporte-cliente {
+        display: none;
+    }
+
+    .contenido-tarjeta {
+        display: none;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .navbar .fa-bars {
+        display: block;
+        color: #fff;
+        font-size: 3rem;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    /* Banner */
+    .contenido-banner {
+        max-width: 50rem;
+        margin: 0 auto;
+        padding: 25rem 0;
+    }
+
+    /* Features */
+    .contenedor-caracteristicas {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 3rem 2rem;
+    }
+
+    .caracteristicas-card {
+        padding: 2rem;
+    }
+
+    /* Headings */
+    .heading-1 {
+        font-size: 2.4rem;
+    }
+
+    /* Categories */
+    .card-categorias {
+        height: 12rem;
+    }
+
+    .card-categorias p {
+        font-size: 2rem;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .card-categorias span {
+        font-size: 1.4rem;
+    }
+
+    /* Product options */
+    .contenedor-opciones {
+        align-items: center;
+    }
+
+    .contenedor-opciones span {
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+
+    /* Products */
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    }
+
+    /* Contact section */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info-container {
+        padding: 2rem;
+    }
+    
+    .contact-form-container {
+        padding: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* ** *****/ /***** MEDIA QUERIES -- 468px *****/ /***** ** */
+@media (max-width: 468px) {
+    html {
+        font-size: 42.5%;
+    }
+
+    /* Banner */
+    .contenido-banner {
+        max-width: 50rem;
+        padding: 18rem 0;
+    }
+
+    /* Headings */
+    .heading-1 {
+        font-size: 2.8rem;
+    }
+
+    /* Features */
+    .caracteristicas-card {
+        flex-direction: column;
+        border-radius: 2rem;
+    }
+
+    .caracteristicas-contenido {
+        align-items: center;
+    }
+
+    .caracteristicas-contenido span {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    /* Product options */
+    .contenedor-opciones span {
+        font-size: 1.8rem;
+        padding: 1rem 1.5rem;
+        font-weight: 500;
+    }
+
+    /* Products */
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 1rem;
+    }
+
+    .contenedor-img .descuento {
+        font-size: 2rem;
+    }
+
+    .contenido-card-producto h3 {
+        font-size: 2.2rem;
+    }
+
+    /* Contact section */
+    .contact-section {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-info-content h3,
+    .contact-form h3 {
+        font-size: 2.4rem;
+    }
+    
+    .contact-info-content p {
+        font-size: 1.6rem;
+    }
+    
+    .contact-detail span {
+        font-size: 1.6rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1.6rem;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        font-size: 1.8rem;
+    }
+
+    /* Additional adjustments for extreme small screens */
+    .contenedor-logo h1 {
+        font-size: 2.5rem;
+    }
+
+    .contenedor-logo i,
+    .contenedor-usuarios i {
+        font-size: 2.5rem;
+    }
+
+    .buscar-form input {
+        width: 15rem;
+    }
+
+    .btn-buscar {
+        padding: 0.8rem;
+    }
+
+    .btn-buscar i {
+        font-size: 1.8rem;
+    }
+}
