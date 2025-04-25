@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio N|1</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1 id="tituloPrincipal">Ejercicio N|1</h1>
+        <p class="parrafo">Este es un parrafo de ejemplo.</p>
+        <p class="parrafo">Este es otro parrafo de ejemplo.</p>
+        <div id="contenedor">
+            <ul>
+                <li>Primer elemento de la lista.</li>
+                <li>Segundo elemento de la lista.</li>
+                <li>Tercer elemento de la lista.</li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        document.getElementById("tituloPrincipal").innerHTML = "Ejercicio 1: Explorando el DOM";
+
+        const parrafos = document.getElementsByClassName("parrafo");
+        for (let i = 0; i < parrafos.length; i++) {
+            parrafos[i].style.color = "blue";
+        }
+
+        const elementosLista = document.querySelectorAll("#contenedor ul li");
+        elementosLista.forEach((elemento, index) => {
+            elemento.innerHTML += ` (Elemento ${index + 1})`;//Resultados: (1,2 o 3) elemento de la lista + Elemento (1,2 o 3)
+        });
+    </script>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
