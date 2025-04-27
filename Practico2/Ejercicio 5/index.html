@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validación de Formularios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .formulario {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .errores {
+            color: red;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="formulario">
+        <h2>Formulario de Validación</h2>
+        
+        <form id="formulario">
+            <p><strong>Nombre:</strong> <input type="text" id="nombre" required></p>
+            <p><strong>Email:</strong> <input type="email" id="email" required></p>
+            <p><strong>Edad:</strong> <input type="number" id="edad" min="18" required></p>
+            <button type="submit">Enviar</button>
+        </form>
+        
+        <div id="errores"></div>
+    </div>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const edad = document.getElementById('edad').value;
+            const erroresDiv = document.getElementById('errores');
+            erroresDiv.innerHTML = '';
+            
+            if (nombre === '') {
+                erroresDiv.innerHTML += '<p>Por favor ingresa tu nombre</p>';
+                return false;
+            }
+            
+            if (!validarCorreo(email)) {
+                erroresDiv.innerHTML += '<p>Por favor ingresa un correo electrónico válido</p>';
+                return false;
+            }
+            
+            if (edad <= 17) {
+                erroresDiv.innerHTML += '<p>La edad debe ser mayor a 18 años</p>';
+                return false;
+            }
+            
+            alert('Formulario enviado exitosamente!');
+        });
+
+        function validarCorreo(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>
