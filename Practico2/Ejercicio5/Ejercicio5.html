@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validacion de Formularios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .formulario {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .errores {
+            color: red;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="formulario">
+        <h2>Formulario de Validacion</h2>
+        
+        <form id="formulario">
+            <p><strong>Nombre:</strong> <input type="text" id="nombre"></p>
+            <div id="errorNombre" class="errores"></div>
+
+            <p><strong>Email:</strong> <input type="text" id="email"></p>
+            <div id="errorEmail" class="errores"></div>
+
+            <p><strong>Edad:</strong> <input type="number" id="edad"></p>
+            <div id="errorEdad" class="errores"></div>
+
+            <button id="enviar" type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            console.log('Evento submit activado');
+            
+            document.getElementById('errorNombre').innerHTML = '';
+            document.getElementById('errorEmail').innerHTML = '';
+            document.getElementById('errorEdad').innerHTML = '';
+
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+            var edad = document.getElementById('edad').value;
+            
+            console.log('valores capturados:', { nombre, email, edad });
+
+            var hayError = false;
+
+            if (nombre == '') {
+                console.log('error: Nombre vacío');
+                document.getElementById('errorNombre').innerHTML = '<p>Por favor ingresa tu nombre</p>';
+                hayError = true;
+            }
+
+            if (!validarCorreo(email)) {
+                console.log('error: Email inválido');
+                document.getElementById('errorEmail').innerHTML = '<p>Por favor ingresa un correo valido</p>';
+                hayError = true;
+            }
+
+            if (edad == '' || isNaN(edad) || edad <= 17) {
+                console.log('error:(debe ser mayor 18)');
+                document.getElementById('errorEdad').innerHTML = '<p>La edad debe ser un número mayor a 18</p>';
+                hayError = true;
+            }
+
+            if (hayError) {
+                console.log('previniendo envio con e.preventDefault()');
+                e.preventDefault();
+            } else {
+                console.log('permitiendo envio del formulario');
+                alert('formulario enviado exitosamente');
+            }
+
+        });
+
+        function validarCorreo(email) {
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var esValido = regex.test(email);
+            console.log('Validación de email:', email, esValido ? 'válido' : 'inválido');
+            return esValido;
+        }
+    </script>
+</body>
+</html>

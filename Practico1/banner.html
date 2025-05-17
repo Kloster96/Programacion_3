@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Cafe Blanca - Banner Principal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root{
+            --primary-color: #c7a17a;
+            --background-color: #f9f5f0;
+            --dark-color: #151515;
+        }
+
+        html{
+            font-size: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Banner */
+        .banner{
+            background-image: linear-gradient(100deg, #000000, #00000020), url(/img/banner.jpg);
+            height: 60rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contenido-banner{
+            max-width: 90rem;
+            margin: 0 auto;
+            padding: 25rem 0;
+        }
+
+        .contenido-banner p{
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contenido-banner h2{
+            color: #fff;
+            font-size: 3.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .contenido-banner a{
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--primary-color);
+            display: inline-block;
+            padding: 1rem 3rem;
+            text-transform: uppercase;
+            border-radius: 3rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            html {
+                font-size: 55%;
+            }
+
+            .contenido-banner {
+                max-width: 50rem;
+                margin: 0 auto;
+                padding: 25rem 0;
+            }
+        }
+
+        @media (max-width: 468px) {
+            html {
+                font-size: 42.5%;
+            }
+
+            .contenido-banner {
+                max-width: 50rem;
+                padding: 18rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Principal -->
+    <section class="banner">
+        <div class="contenido-banner">
+            <p>Cafe Delisioso</p>
+            <h2>100% Natural <br>Cafe Fresco</h2>
+            <a href="#">Comprar Ahora</a>
+        </div>
+    </section>
+</body>
+</html>

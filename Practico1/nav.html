@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Cafe Blanca - Header y Navegacion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root{
+            --primary-color: #c7a17a;
+            --background-color: #f9f5f0;
+            --dark-color: #151515;
+        }
+
+        html{
+            font-size: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Utilidades */
+        .contenedor{
+            max-width: 120rem;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .contenedor-destacado{
+            background-color: var(--background-color);
+        }
+
+        .destacado{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .soporte-cliente{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .soporte-cliente i{
+            font-size: 3.3rem;
+        }
+
+        .contenedor-soporte-cliente{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contenedor-logo{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contenedor-logo i{
+            font-size: 3rem;
+        }
+
+        .contenedor-logo h1 a{
+            text-decoration: none;
+            color: #000;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .contenedor-usuarios{
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .contenedor-usuarios .fa-user{
+            font-size: 3rem;
+            color: var(--primary-color);
+            padding-right: 2.5rem;
+            border-right: 1px solid #e2e2e2;
+        }
+
+        .contenedor-usuarios .fa-basket-shopping{
+            font-size: 3rem;
+            color: var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .contenido-tarjeta{
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .contenedor-navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .navbar .fa-bars{
+            display: none;
+        }
+
+        .menu{
+            display: flex;
+            gap: 2rem;
+        }
+
+        .menu li{
+            list-style: none;
+        }
+
+        .menu a{
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .menu a::after{
+            content: '';
+            width: 1.5rem;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            opacity: 0;
+            transition: all .3s ease;
+        }
+
+        .menu a:hover::after{
+            opacity: 1;
+        }
+
+        .menu a:hover{
+            color: #fff;
+        }
+
+        .buscar-form{
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 2rem;
+            background-color: #fff;
+            height: 4.4rem;
+            overflow: hidden;
+        }
+
+        .buscar-form input{
+            outline: none;
+            font-family: inherit;
+            border: none;
+            width: 25rem;
+            font-size: 1.4rem;
+            padding: 0 2rem;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .buscar-form input::-webkit-search-cancel-button{
+            appearance: none;
+        }
+
+        .btn-buscar{
+            border: none;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 1rem;
+        }
+
+        .btn-buscar i{
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            html {
+                font-size: 55%;
+            }
+
+            .destacado {
+                padding: 2rem;
+            }
+
+            .soporte-cliente {
+                display: none;
+            }
+
+            .contenido-tarjeta {
+                display: none;
+            }
+
+            .navbar {
+                padding: 1rem 2rem;
+            }
+
+            .navbar .fa-bars {
+                display: block;
+                color: #fff;
+                font-size: 3rem;
+            }
+
+            .menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 468px) {
+            html {
+                font-size: 42.5%;
+            }
+
+            .contenedor-logo h1 {
+                font-size: 2.5rem;
+            }
+
+            .contenedor-logo i,
+            .contenedor-usuarios i {
+                font-size: 2.5rem;
+            }
+
+            .buscar-form input {
+                width: 15rem;
+            }
+
+            .btn-buscar {
+                padding: 0.8rem;
+            }
+
+            .btn-buscar i {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Header principal -->
+        <div class="contenedor-destacado">
+            <div class="contenedor destacado">
+                <div class="soporte-cliente"><i class="fa-solid fa-headset"></i>
+                    <div class="contenedor-soporte-cliente">
+                        <span class="texto">Soporte Cliente</span>
+                        <span class="numero">291-549991241</span>
+                    </div>
+                </div>
+                <div class="contenedor-logo">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <h1 class="logo">Cafe Blanca</h1>
+                </div>
+                <div class="contenedor-usuarios">
+                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <div class="contenido-tarjeta">
+                        <span class="texto">Carrito de compra</span>
+                        <span class="numero">(0)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de navegación -->
+        <div class="contenedor-navbar">
+            <nav class="navbar contenedor">
+                <i id="menu-hamburguesa" class="fa-solid fa-bars"></i>
+                 <ul class="menu">
+                    <li><a href="nav.html" target="_blank">Inicio</a></li>
+                    <li><a href="banner.html" target="_blank">Banner</a></li>
+                    <li><a href="categorias.html" target="_blank">Categorias</a></li>
+                    <li><a href="productos.html" target="_blank">Productos</a></li>
+                    <li><a href="galeria.html" target="_blank">Galeria</a></li>
+                    <li><a href="contacto.html" target="_blank">Contacto</a></li>
+                </ul>
+
+                <form action="" class="buscar-form">
+                    <input type="search" placeholder="Buscar...">
+                    <button class="btn-buscar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

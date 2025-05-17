@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Cafe Blanca - Caracteristicas y Categorias</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root{
+            --primary-color: #c7a17a;
+            --background-color: #f9f5f0;
+            --dark-color: #151515;
+        }
+
+        html{
+            font-size: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Utilidades */
+        .contenedor{
+            max-width: 120rem;
+            margin: 0 auto;
+        }
+
+        .heading-1{
+            text-align: center;
+            font-weight: 500;
+            font-size: 3rem;
+        }
+
+        /* Contenido menu */
+        .contenido-menu{
+            background-color: var(--background-color);
+            padding: 2rem 0;
+        }
+
+        /* Características */
+        .contenedor-caracteristicas{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        .caracteristicas-card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5em;
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem 0;
+        }
+
+        .caracteristicas-card i{
+            font-size: 2.7rem;
+            color: var(--primary-color);
+
+        }
+
+        .caracteristicas-contenido{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .caracteristicas-contenido span{
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .caracteristicas-contenido p{
+            color: #777;
+            font-weight: 500;
+        }
+        
+        /* Categorías */
+        .top-categorias{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contenedor-categorias{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .card-categorias {
+            height: 20rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2rem;
+            gap: 2rem;
+        }
+
+        .categorias-moca{
+            background-image: linear-gradient( #00000080, #00000080), url(/img/capuchino-category.jpg);
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .categorias-capuchino{
+            background-image: linear-gradient( #00000080, #00000080), url(/img/expreso-category.jpg);
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .categorias-expreso{
+            background-image: linear-gradient( #00000080, #00000080), url(/img/moca-category.jpg);
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .card-categorias p{
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: capitalize;
+            position: relative;
+        }
+
+        .card-categorias p::after{
+            content: '';
+            width: 2.5rem;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            cursor: pointer;
+            bottom: -1rem;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+        .card-categorias span{
+            font-size: 1.6rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .card-categorias span:hover{
+            color: var(--primary-color);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            html {
+                font-size: 55%;
+            }
+
+            .heading-1 {
+                font-size: 2.4rem;
+            }
+
+            .contenedor-caracteristicas {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 3rem 2rem;
+            }
+
+            .caracteristicas-card {
+                padding: 2rem;
+            }
+
+            .card-categorias {
+                height: 12rem;
+            }
+
+            .card-categorias p {
+                font-size: 2rem;
+                text-align: center;
+                line-height: 1;
+            }
+
+            .card-categorias span {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 468px) {
+            html {
+                font-size: 42.5%;
+            }
+
+            .heading-1 {
+                font-size: 2.8rem;
+            }
+
+            .caracteristicas-card {
+                flex-direction: column;
+                border-radius: 2rem;
+            }
+
+            .caracteristicas-contenido {
+                align-items: center;
+            }
+
+            .caracteristicas-contenido span {
+                font-size: 1.6rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="contenido-menu">
+        <!-- Sección de Características -->
+        <section class="contenedor contenedor-caracteristicas">
+            <div class="caracteristicas-card">
+                <i class="fa-solid fa-motorcycle"></i>
+                <div class="caracteristicas-contenido">
+                    <span>Envios</span>
+                </div>
+            </div>
+
+            <div class="caracteristicas-card">
+                <i class="fa-solid fa-wallet"></i>
+                <div class="caracteristicas-contenido">
+                    <span>Cotrarembolsos</span>
+                </div>
+            </div>
+
+            <div class="caracteristicas-card">
+                <i class="fa-solid fa-gift"></i>
+                <div class="caracteristicas-contenido">
+                    <span>Tarjetas de regalos</span>
+                </div>
+            </div>
+
+            <div class="caracteristicas-card">
+                <i class="fa-solid fa-headset"></i>
+                <div class="caracteristicas-contenido">
+                    <span>Atencion al servicio 9:00 a 19:00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Categorías -->
+        <section class="contenedor top-categorias">
+            <h1 class="heading-1">Mejores Categorias</h1>
+            <div class="contenedor-categorias">
+                <div class="card-categorias categorias-moca">
+                    <p>Cafe Moca</p>
+                    <span>Ver mas</span>
+                </div>
+                <div class="card-categorias categorias-expreso">
+                    <p>Cafe Expreso</p>
+                    <span>Ver mas</span>
+                </div>
+                <div class="card-categorias categorias-capuchino">
+                    <p>Cafe Capuchino</p>
+                    <span>Ver mas</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

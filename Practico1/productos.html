@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Destacados - Cafe Blanca</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root{
+            --primary-color: #c7a17a;
+            --background-color: #f9f5f0;
+            --dark-color: #151515;
+        }
+
+        html{
+            font-size: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        /* Utilidades */
+        .contenedor{
+            max-width: 120rem;
+            margin: 0 auto;
+        }
+
+        .heading-1{
+            text-align: center;
+            font-weight: 500;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Sección de Productos */
+        .top-productos{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-top: 3rem;
+        }
+
+        .contenedor-opciones{
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contenedor-opciones span{
+            color: #777;
+            background-color: #fff;
+            padding: .7rem 3rem;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            border-radius: 2rem;
+            cursor: pointer;
+        }
+
+        .contenedor-opciones span:hover{
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .contenedor-opciones span.activar{
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Tarjetas de productos */
+        .contenedor-productos{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));  
+            gap: 3rem;
+        }
+
+        .card-producto{
+            background-color: #fff;
+            padding: 2rem 3rem;
+            border-radius: .8rem;
+            cursor: pointer;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .contenedor-img{
+            position: relative;
+        }
+
+        .contenedor-img img{
+            width: 100%;
+            max-height: 25rem;
+            object-fit: cover;
+        }
+
+        .contenedor-img .descuento {
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2px 1.2rem;
+            border-radius: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .card-producto:hover .descuento{
+            background-color: #000;
+        }
+
+        .btn-grupo{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: absolute;
+            top: 0;
+            right: -3rem;
+            z-index: -1;
+            transition: all .4s ease;
+        }
+
+        .btn-grupo span {
+            border: 1px solid var(--primary-color);
+            padding: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: white;
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+
+        .btn-grupo span:hover{
+            background-color: var(--primary-color);
+        }
+
+        .btn-grupo span i{
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .btn-grupo span:hover i{
+            color: #fff;
+        }
+
+        .card-producto:hover .btn-grupo{
+            z-index: 0;
+            right: -1rem;
+        }
+
+        .contenido-card-producto{
+            display: grid;
+            justify-items: center;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(6, min-content);
+            row-gap: 1rem;
+        }
+
+        .estrellas{
+            grid-row: 1/2;
+            grid-column: 1/-1;
+        }
+
+        .estrellas i{
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .contenido-card-producto h3{
+            grid-row: 2/3;
+            grid-column: 1/-1;
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .contenido-card-producto h3:hover{
+            color: var(--primary-color);
+        }
+
+        .agregar-card{
+            justify-self: start;
+            border: 2px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all .4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .agregar-card:hover{
+            background-color: var(--primary-color);
+        }
+
+        .agregar-card i{
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .agregar-card:hover i{
+            color: #fff;
+        }
+
+        .contenido-card-producto .precio {
+            justify-self: end;
+            align-self: center;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .contenido-card-producto .precio span {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-decoration: line-through;
+            color: #777;
+            margin-left: .5rem;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            html {
+                font-size: 55%;
+            }
+
+            .heading-1 {
+                font-size: 2.4rem;
+            }
+
+            .contenedor-opciones span {
+                text-align: center;
+                padding: 1rem 2rem;
+            }
+
+            .contenedor-productos {
+                grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+            }
+        }
+
+        @media (max-width: 468px) {
+            html {
+                font-size: 42.5%;
+            }
+
+            .heading-1 {
+                font-size: 2.8rem;
+            }
+
+            .contenedor-opciones span {
+                font-size: 1.8rem;
+                padding: 1rem 1.5rem;
+                font-weight: 500;
+            }
+
+            .contenedor-productos {
+                grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+                gap: 1rem;
+            }
+
+            .contenedor-img .descuento {
+                font-size: 2rem;
+            }
+
+            .contenido-card-producto h3 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="contenido-menu">
+        <section class="contenedor top-productos">
+            <h1 class="heading-1">Mejores Productos</h1>
+
+            <div class="contenedor-opciones">
+                <span class="activar">Destacados</span>
+                <span>Mas reciente</span>
+                <span>Mejores vendidos</span>
+            </div>
+
+            <div class="contenedor-productos">
+                <!-- Producto 1 -->
+                <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-australiano.jpg" alt="Cafe Irish">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Australiano</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-capuchino.png" alt="Cafe Helado">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Capuchino</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-helado.jpg" alt="Cafe Viena">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Helado</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                                 <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-liqueurs.jpg" alt="Cafe Irish">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Liqueurs</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+                <!-- Producto 5 -->
+                                 <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-ingles.jpg" alt="Cafe Irish">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Ingles</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+                <!-- Producto 6 -->
+                                 <div class="card-producto">
+                    <div class="contenedor-img">
+                        <img src="/img/cafe-irish.jpg" alt="Cafe Irish">
+                        <span class="descuento">15%</span>
+                        <div class="btn-grupo">
+                            <span>
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-code-compare"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contenido-card-producto">
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h3>Cafe Irish</h3>
+                        <span class="agregar-card">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <p class="precio">3500$ <span>4200$</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
