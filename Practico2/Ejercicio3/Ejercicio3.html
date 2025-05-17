@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+    <style>
+
+        .resaltado {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .parrafo {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 3</h1>
+    
+    <div>
+        <button id="btnResaltar">Resaltar parrafos</button>
+        <button id="btnOcultar">Ocultar/Mostrar parrafos</button>
+    </div>
+    
+    <div id="contenido">
+        <p class="parrafo">Lorem ipsum dolor sit amet.</p>
+        <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia earum in molestiae. Consectetur, aut assumenda.</p>
+        <p class="parrafo">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, ex!</p>
+    </div>
+    
+    <script>
+        const btnResaltar = document.getElementById('btnResaltar');
+        const btnOcultar = document.getElementById('btnOcultar');
+        const parrafos = document.querySelectorAll('.parrafo');
+        
+        btnResaltar.addEventListener('click', function() {
+            parrafos.forEach(function(parrafo) {
+                parrafo.classList.add('resaltado');
+            });
+        });
+        
+        btnOcultar.addEventListener('click', function() {
+            parrafos.forEach(function(parrafo) {
+                parrafo.classList.toggle('oculto');
+            });
+        });
+    </script>
+</body>
+</html>
