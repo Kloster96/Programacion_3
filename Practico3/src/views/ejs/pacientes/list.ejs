@@ -1,0 +1,39 @@
+<div class="container" style="max-width: 900px; margin: auto;">
+    <h2>Listar Pacientes</h2>
+
+    <% if (pacientes && pacientes.length > 0) { %>
+        <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% pacientes.forEach(paciente => { %>
+                    <tr>
+                        <td><%= paciente.id %></td>
+                        <td><%= paciente.dni %></td>
+                        <td><%= paciente.nombre %></td>
+                        <td><%= paciente.apellido %></td>
+                        <td><%= paciente.email %></td>  
+                        <td>
+                            <div class="actions">
+                                <a href="/pacientes/editar/<%= paciente.id %>" class="btn btn-edit">Editar</a>
+                                <form action="/pacientes/<%= paciente.id %>/baja" method="POST" class="inline-form">
+                                    <button type="submit" class="btn btn-delete">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No hay pacientes registrados.</p>
+    <% } %>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clinica - Gestion de turnos</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Gestion de clinica</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <% if (user) { %>
+                        <li><a href="/turnos">Turnos</a></li>
+                        <li><a href="/pacientes">Pacientes</a></li>
+                    <% } %>
+                    <% if (!user) { %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Registrarse</a></li>
+                    <% } %>
+                </ul>
+
+                <% if (user) { %>
+                    <div class="user-info">
+                        <span>Bienvenido, <%= user.nombre %></span>
+                        <a href="/logout">Salir</a>
+                    </div>
+                <% } %>
+            </nav>
+        </header>
+        <main>
+            <%- body %>
+        </main>
+    </body>
+</html>

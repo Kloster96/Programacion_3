@@ -1,0 +1,44 @@
+<div class="container" style="max-width: 900px; margin: auto;">
+    <h2>Listado de turnos</h2>
+    <a class="btn btn-edit" href="/turnos/nuevo">Registrar nuevo turno</a>
+
+    <% if (turnos && turnos.length > 0) { %>
+        <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Paciente ID</th>
+                    <th>Motivo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% turnos.forEach(turno => { %>
+                    <tr>
+                        <td><%= turno.id %></td>
+                        <td><%= turno.fecha %></td>
+                        <td><%= turno.pacienteId %></td>
+                        <td><%= turno.motivo %></td>
+                        <td><%= turno.estado %></td>
+                        <td>
+                            <div class="actions">
+                                <% if (turno.estado !== 'cancelado') { %>
+                                    <a href="/turnos/<%= turno.id %>/editar" class="btn btn-edit">Editar</a>
+                                    <form action="/turnos/<%= turno.id %>/cancelar" method="POST" class="inline-form">
+                                        <button type="submit" class="btn btn-cancel">Cancelar</button>
+                                    </form>
+                                <% } else { %>
+                                    <span class="text-muted">Turno cancelado</span>
+                                <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No hay turnos registrados</p>
+    <% } %>
+</div>

@@ -1,0 +1,21 @@
+<div class="form-container">
+    <h2>Registrar nuevo Paciente</h2>
+    <form action="/pacientes/nuevo" method="POST">
+        <label for="dni">DNI:</label>
+        <input type="text" name="dni" id="dni" required>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" id="apellido" required>
+
+        <label for="email">Mail:</label>
+        <input type="email" name="email" id="email" required>
+
+        <div class="form-buttons">
+            <button type="submit">Registrar</button>
+            <a href="/pacientes">Volver</a>
+        </div>
+    </form>
+</div>

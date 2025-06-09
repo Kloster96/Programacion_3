@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Estoy en EJS</h2>
+        <p class="text-center">Bienvenido a nuestra aplicación web de gestión de turnos.</p>
+
+        <% if (showFeatures) { %>
+            <section>
+                <ul>
+                    <% features.forEach(function(feature) { %>
+                        <li><%= feature %></li>
+                    <% }); %>
+                </ul>
+            </section>
+        <% } else { %>
+            <p>No hay características disponibles.</p>
+        <% } %>
+
+        <% if (instructions) { %>
+            <section class="instructions">
+                <h2>🩺 ¿Cómo usar la aplicación?</h2>
+                <ol>
+                    <% instructions.forEach(function(step) { %>
+                        <li><%= step %></li>
+                    <% }); %>
+                </ol>
+            </section>
+        <% } %>
+    </div>
+
+    <footer class="text-center">
+        <p>© <%= new Date().getFullYear() %> Mi Aplicación</p>
+    </footer>
+</body>
+</html>

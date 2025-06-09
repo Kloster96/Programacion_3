@@ -1,0 +1,27 @@
+<div class="form-container">
+    <h2>Registrar nuevo turno</h2>
+    <form action="/turnos/nuevo" method="post">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="paciente_id">Paciente:</label>
+        <select id="paciente_id" name="pacienteId" required>
+            <% if (pacientes.length > 0) { %>
+                <% pacientes.forEach(paciente => { %>
+                    <option value="<%= paciente.id %>"><%= paciente.nombre %> <%= paciente.apellido %> (DNI: <%= paciente.dni %>)</option>
+                <% }); %>
+            <% } else { %>
+                <option value="">No hay pacientes registrados</option>
+            <% } %>
+        </select>
+
+        <label for="motivo">Motivo:</label>
+        <textarea id="motivo" name="motivo" required></textarea>
+
+        <input type="hidden" name="estado" value="activo">
+        <div class="form-buttons">
+            <button type="submit">Registrar Turno</button>
+            <a href="/turnos">Volver a la lista</a>
+        </div>
+    </form>
+</div>

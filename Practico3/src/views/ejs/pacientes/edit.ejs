@@ -1,0 +1,23 @@
+<div class="form-container">
+    <h2>Editar Paciente: <%= paciente.nombre %> <%= paciente.apellido %></h2>
+    <form action="/pacientes/editar/<%= paciente.id %>" method="POST">
+        <input type="hidden" name="id" value="<%= paciente.id %>">
+
+        <label for="dni">DNI:</label>
+        <input type="text" name="dni" id="dni" value="<%= paciente.dni %>" required>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="<%= paciente.nombre %>" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" id="apellido" value="<%= paciente.apellido %>" required>
+
+        <label for="email">Mail:</label>
+        <input type="email" name="email" id="email" value="<%= paciente.email %>" required>
+
+        <div class="form-buttons">
+            <button type="submit">Guardar Cambios</button>
+            <a href="/pacientes">Volver</a>
+        </div>
+    </form>
+</div>
