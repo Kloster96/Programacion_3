@@ -1,0 +1,7 @@
+.lista-tarjetas {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px;
+}
