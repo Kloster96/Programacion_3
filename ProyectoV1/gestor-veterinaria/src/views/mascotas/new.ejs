@@ -1,0 +1,43 @@
+<h1 class="mb-4"><%= title %></h1>
+
+<% if(error) { %>
+    <div class="alert alert-danger" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+
+<form action="/mascotas/crear" method="POST">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="<%= typeof mascota !== 'undefined' ? mascota.nombre : '' %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="especie" class="form-label">Especie:</label>
+        <input type="text" class="form-control" id="especie" name="especie" value="<%= typeof mascota !== 'undefined' ? mascota.especie : '' %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="raza" class="form-label">Raza:</label>
+        <input type="text" class="form-control" id="raza" name="raza" value="<%= typeof mascota !== 'undefined' ? mascota.raza : '' %>" required >
+    </div>
+    <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" value="<%= typeof mascota !== 'undefined' && mascota.fechaNacimiento ? mascota.fechaNacimiento : '' %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="duenoId" class="form-label">Dueño:</label>
+        <select class="form-select" id="duenoId" name="duenoId" required>
+            <option value="">Selecciona un dueño</option>
+            <% duenos.forEach(function(dueno) { %>
+                <option value="<%= dueno.id %>" <%= typeof mascota !== 'undefined' && mascota.duenoId == dueno.id ? 'selected' : '' %>>
+                    <%= dueno.nombre %> <%= dueno.apellido %>
+                </option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="observaciones" class="form-label">Observaciones:</label>
+        <textarea class="form-control" id="observaciones" name="observaciones" rows="3"><%= typeof mascota !== 'undefined' ? mascota.observaciones : '' %></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Mascota</button>
+    <a href="/mascotas" class="btn btn-secondary ms-2">Cancelar</a>
+</form>
