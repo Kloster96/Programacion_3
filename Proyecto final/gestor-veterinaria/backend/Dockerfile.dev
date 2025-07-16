@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+COPY package-lock.json ./
+COPY . .
+RUN npm ci
+#ENV NODE_PATH=/app/node_modules
+RUN cat /app/src/models/init-models.js
+EXPOSE 3001
+CMD ["npm", "run", "dev"]

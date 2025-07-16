@@ -1,0 +1,16 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "PostgreSQL Local (Docker)",
+      "Group": "Docker Services",
+      "Port": 5432,
+      "Username": "admin",
+      "Host": "db",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "mascotas_db",
+      "PassFile": "/pgadmin4/pgpass",
+      "Service": "pgadmin",
+      "DiscoveryId": "pgadmin4"
+    }
+  }
+}

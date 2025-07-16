@@ -1,0 +1,17 @@
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+#COPY package-lock.json ./
+RUN npm install
+COPY . .
+RUN ls -la /app
+# Muestra el contenido de postcss.config.js
+RUN cat /app/postcss.config.js || echo "postcss.config.js no encontrado o vacío"
+# Muestra el contenido de src/index.css
+RUN cat /app/src/index.css || echo "src/index.css no encontrado o vacío"
+# Muestra el contenido de node_modules/tailwindcss/package.json
+RUN cat /app/node_modules/tailwindcss/package.json || echo "tailwindcss no encontrado en node_modules"
+# Muestra el contenido de node_modules/@tailwindcss/postcss/package.json
+RUN cat /app/node_modules/@tailwindcss/postcss/package.json || echo "@tailwindcss/postcss no encontrado en node_modules"
+EXPOSE 3000
+CMD [ "npm", "start" ]
